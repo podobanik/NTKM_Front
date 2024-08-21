@@ -6,6 +6,7 @@ import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import InputGroup from 'react-bootstrap/InputGroup';
 
 
 axios.defaults.xsrfCookieName = 'csrftoken';
@@ -29,6 +30,12 @@ function App() {
   const [last_name, setLastName] = useState('');
   const [second_name, setSecondName] = useState('');
   const [title, setTitle] = useState('');
+  const [birthday, setBirthday] = useState(Date.now());
+  //const [phone, setPhone] = useState(0);
+  //const [is_active, setIsActive] = useState(false);
+  const [is_superuser, setIsSuperUser] = useState(false);
+  //const [is_staff, setIsStaff] = useState(false);
+  //const [sector, setSector] = useState(null);
   
   useEffect(() => {
     client.get("/user/")
@@ -142,38 +149,43 @@ function App() {
         <div className="center">
           <Form onSubmit={e => submitRegistration(e)}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Label>Email</Form.Label>
-              <Form.Control type="email" placeholder="Enter email" value={email} onChange={e => setEmail(e.target.value)} />
-              <Form.Text className="text-muted">
-                We'll never share your email with anyone else.
-              </Form.Text>
+              <Form.Label>Адрес электронной почты:</Form.Label>
+              <Form.Control type="email" placeholder="Введите адрес электронной почты" value={email} onChange={e => setEmail(e.target.value)} />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicUsername">
-              <Form.Label>Username</Form.Label>
-              <Form.Control type="text" placeholder="Enter login" value={username} onChange={e => setUsername(e.target.value)} />
+              <Form.Label>Логин</Form.Label>
+              <Form.Control type="text" placeholder="Введите логин" value={username} onChange={e => setUsername(e.target.value)} />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicPassword">
-              <Form.Label>Password</Form.Label>
-              <Form.Control type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
+              <Form.Label>Пароль</Form.Label>
+              <Form.Control type="password" placeholder="Введите пароль" value={password} onChange={e => setPassword(e.target.value)} />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicLastName">
-              <Form.Label>Last Name</Form.Label>
-              <Form.Control type="text" placeholder="Enter last name" value={last_name} onChange={e => setLastName(e.target.value)} />
+              <Form.Label>Фамилия</Form.Label>
+              <Form.Control type="text" placeholder="Введите фамилию" value={last_name} onChange={e => setLastName(e.target.value)} />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicFirstName">
-              <Form.Label>First Name</Form.Label>
-              <Form.Control type="text" placeholder="Enter name" value={first_name} onChange={e => setFirstName(e.target.value)} />
+              <Form.Label>Имя</Form.Label>
+              <Form.Control type="text" placeholder="Введите имя" value={first_name} onChange={e => setFirstName(e.target.value)} />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicSecondName">
-              <Form.Label>Surname</Form.Label>
-              <Form.Control type="text" placeholder="Enter surname" value={second_name} onChange={e => setSecondName(e.target.value)} />
+              <Form.Label>Отчество</Form.Label>
+              <Form.Control type="text" placeholder="Введите отчество" value={second_name} onChange={e => setSecondName(e.target.value)} />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicTitle">
-              <Form.Label>Title</Form.Label>
-              <Form.Control type="text" placeholder="Enter title" value={title} onChange={e => setTitle(e.target.value)} />
+              <Form.Label>Должность</Form.Label>
+              <Form.Control type="text" placeholder="Введите название должности" value={title} onChange={e => setTitle(e.target.value)} />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicBirthday">
+              <Form.Label>День рождения</Form.Label>
+              <Form.Control type="date" placeholder="День рождения" value={birthday} onChange={e => setBirthday(e.target.value)} />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicIsSuperUser">
+              <InputGroup.Checkbox aria-label="Radio button for following text input" />
+              <Form.Control aria-label="Да" type="checkbox" value={is_superuser} onChange={e => setIsSuperUser(e.target.value)} />
             </Form.Group>
             <Button variant="primary" type="submit">
-              Submit
+              Подтвердить
             </Button>
           </Form>
         </div>
@@ -181,18 +193,18 @@ function App() {
         <div className="center">
           <Form onSubmit={e => submitLogin(e)}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Label>Email</Form.Label>
-              <Form.Control type="email" placeholder="Enter email" value={email} onChange={e => setEmail(e.target.value)} />
+              <Form.Label>Адрес электронной почты</Form.Label>
+              <Form.Control type="email" placeholder="Введите адрес электронной почты" value={email} onChange={e => setEmail(e.target.value)} />
               <Form.Text className="text-muted">
                 We'll never share your email with anyone else.
               </Form.Text>
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicPassword">
-              <Form.Label>Password</Form.Label>
-              <Form.Control type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
+              <Form.Label>Пароль</Form.Label>
+              <Form.Control type="password" placeholder="Введите пароль" value={password} onChange={e => setPassword(e.target.value)} />
             </Form.Group>
             <Button variant="primary" type="submit">
-              Submit
+              Подтвердить
             </Button>
           </Form>
         </div>

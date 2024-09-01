@@ -1,7 +1,7 @@
 import {Fragment, useState} from "react";
 import {Button, Modal, ModalHeader, ModalFooter} from "reactstrap";
 import axios from "axios";
-import {API_URL} from "./App";
+import {API_URL_PROBLEMS} from "./App";
 
 const AppRemoveProblem = (props) => {
     const [visible, setVisible] = useState(false)
@@ -9,7 +9,7 @@ const AppRemoveProblem = (props) => {
         setVisible(!visible)
     }
     const deleteProblem = () => {
-        axios.delete(API_URL + props.pk).then(() => {
+        axios.delete(API_URL_PROBLEMS + props.pk).then(() => {
             props.resetState()
             toggle();
         });

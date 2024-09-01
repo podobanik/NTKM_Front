@@ -15,6 +15,7 @@ const ListProblems = (props) => {
                 <th>Статус задачи</th>
                 <th>Объект АСУТП</th>
                 <th>Контрольный срок</th>
+                <th>Дата добавления</th>
                 <th></th>
             </tr>
             </thead>
@@ -25,14 +26,15 @@ const ListProblems = (props) => {
                         <b>Пока ничего нет</b>
                     </td>
                 </tr>
-            ) : problems.map(problem => (
+            ) : Array.isArray(problems) && problems?.map(problem => (
                     <tr key={problem.pk}>
                         <td>{problem.problem_text}</td>
-                        <td>{problem.user}</td>
-                        <td>{problem.problem_type}</td>
-                        <td>{problem.problem_status}</td>
-                        <td>{problem.object_of_work}</td>
+                        <td>{problem.user_id}</td>
+                        <td>{problem.problem_type_id}</td>
+                        <td>{problem.problem_status_id}</td>
+                        <td>{problem.object_of_work_id}</td>
                         <td>{problem.control_date}</td>
+                        <td>{problem.add_date}</td>
                         <td>
                             <ModalProblem
                                 create={false}
@@ -42,7 +44,7 @@ const ListProblems = (props) => {
                             />
                             &nbsp;&nbsp;
                             <AppRemoveProblem
-                                pk={problem.pk}
+                                pk={problem.id}
                                 resetState={props.resetState}
                             />
                         </td>

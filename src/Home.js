@@ -3,7 +3,7 @@ import ListProblems from "./ListProblems";
 import axios from "axios";
 import {useEffect, useState} from "react";
 import ModalProblem from "./ModalProblem";
-import {API_URL} from "./App";
+import {API_URL_PROBLEMS} from "./App";
 
 const Home = () => {
     const [problems, setProblems] = useState([])
@@ -13,7 +13,7 @@ const Home = () => {
     },[])
 
     const getProblems = (data)=>{
-        axios.get(API_URL).then(data => setProblems(data.data))
+        axios.get(API_URL_PROBLEMS).then(data => setProblems(data.data))
     }
 
     const resetState = () => {

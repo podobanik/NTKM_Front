@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import {Button, Form, FormGroup, Input, Label} from "reactstrap";
 import axios from "axios";
-import {API_URL} from "./App";
+import {API_URL_PROBLEMS} from "./App";
 
 const ProblemForm = (props) => {
     const [problem, setProblem] = useState({})
@@ -28,7 +28,7 @@ const ProblemForm = (props) => {
     const submitDataEdit = async (e) => {
         e.preventDefault();
         // eslint-disable-next-line
-        const result = await axios.put(API_URL + problem.pk, problem, {headers: {'Content-Type': 'multipart/form-data'}})
+        const result = await axios.put(API_URL_PROBLEMS + problem.pk, problem, {headers: {'Content-Type': 'multipart/form-data'}})
             .then(() => {
                 props.resetState()
                 props.toggle()
@@ -45,7 +45,7 @@ const ProblemForm = (props) => {
             control_date: problem['control_date']
         }
         // eslint-disable-next-line
-        const result = await axios.post(API_URL, data, {headers: {'Content-Type': 'multipart/form-data'}})
+        const result = await axios.post(API_URL_PROBLEMS, data, {headers: {'Content-Type': 'multipart/form-data'}})
             .then(() => {
                 props.resetState()
                 props.toggle()

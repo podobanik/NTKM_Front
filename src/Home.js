@@ -15,37 +15,15 @@ const Home = () => {
 
 
     useEffect(()=>{
+        getSectors()
+        getProblemStatusAll()
+        getProblemTypeAll()
+        getObjectsOfWork()
         getProblems()
-    },[])
-
-    useEffect(()=>{
         getUsers()
     },[])
 
-    useEffect(()=>{
-        getSectors()
-    },[])
 
-    useEffect(()=>{
-        getProblemStatusAll()
-    },[])
-
-    useEffect(()=>{
-        getProblemTypeAll()
-    },[])
-
-    useEffect(()=>{
-        getObjectsOfWork()
-    },[])
-
-
-    const getProblems = (data)=>{
-        axios.get(API_URL_PROBLEMS).then(data => setProblems(data.data))
-    }
-
-    const getUsers = (data)=>{
-        axios.get(API_URL_USERS).then(data => setUsers(data.data))
-    }
 
     const getSectors = (data)=>{
         axios.get(API_URL_SECTORS).then(data => setSectors(data.data))
@@ -63,13 +41,23 @@ const Home = () => {
         axios.get(API_URL_OBJECTS_OF_WORK).then(data => setObjectsOfWork(data.data))
     }
 
+    const getUsers = (data)=>{
+        axios.get(API_URL_USERS).then(data => setUsers(data.data))
+    }
+
+    const getProblems = (data)=>{
+        axios.get(API_URL_PROBLEMS).then(data => setProblems(data.data))
+    }
+
+
+
     const resetState = () => {
-        getProblems();
-        getUsers();
         getSectors();
         getProblemStatusAll();
         getProblemTypeAll();
         getObjectsOfWork();
+        getUsers();
+        getProblems();
     };
 
     return (

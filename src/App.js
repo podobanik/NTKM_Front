@@ -6,12 +6,16 @@ import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Home";
-import ModalProblem from "./ModalProblem";
 
 
 export const API_URL_PROBLEMS = "http://127.0.0.1:8000/problems/"
+export const API_URL_USERS = "http://127.0.0.1:8000/users/"
+export const API_URL_SECTORS = "http://127.0.0.1:8000/sectors/"
+export const API_URL_PROBLEM_STATUS_ALL = "http://127.0.0.1:8000/problem_status_all/"
+export const API_URL_PROBLEM_TYPE_ALL = "http://127.0.0.1:8000/problem_type_all/"
+export const API_URL_OBJECTS_OF_WORK = "http://127.0.0.1:8000/objects_of_work/"
+
 
 axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSRFToken';
@@ -54,10 +58,10 @@ function App() {
   }, []);
   function update_form_btn() {
     if (registrationToggle) {
-      document.getElementById("form_btn").innerHTML = "Register";
+      document.getElementById("form_btn").innerHTML = "Регистрация";
       setRegistrationToggle(false);
     } else {
-      document.getElementById("form_btn").innerHTML = "Log in";
+      document.getElementById("form_btn").innerHTML = "Вход";
       setRegistrationToggle(true);
     }
   }
@@ -110,8 +114,7 @@ function App() {
     e.preventDefault();
     client.post(
       "/logout/",
-      {}
-      //{withCredentials: true}
+      {withCredentials: true}
     ).then(function(res) {
       setCurrentUser(false);
     });

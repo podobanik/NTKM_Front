@@ -5,6 +5,10 @@ import {API_URL_PROBLEMS} from "./App";
 
 const ProblemForm = (props) => {
     const [problem, setProblem] = useState({})
+    //const [users, setUsers] = useState({})
+    //const [problem_status_all, setProblemStatusAll] = useState([])
+    //const [problem_type_all, setProblemTypeAll]= useState([])
+    //const [objects_of_work, setObjectsOfWork]= useState([])
 
     const onChange = (e) => {
         const newState = problem
@@ -13,6 +17,7 @@ const ProblemForm = (props) => {
         } else newState[e.target.name] = e.target.value
         setProblem(newState)
     }
+
 
     useEffect(() => {
         if (!props.newProblem) {
@@ -63,18 +68,35 @@ const ProblemForm = (props) => {
                 />
             </FormGroup>
             <FormGroup>
-                <Label for="user">Ответственный сотрудник</Label>
+                <Label for="userSelect">
+                    Ответственный сотрудник
+                </Label>
                 <Input
-                    type="text"
-                    name="user"
-                    onChange={onChange}
-                    defaultValue={defaultIfEmpty(problem.user)}
-                />
+                    id="userSelect"
+                    name="select"
+                    type="select"
+                >
+                    <option>
+                        1
+                    </option>
+                    <option>
+                        2
+                    </option>
+                    <option>
+                        3
+                    </option>
+                    <option>
+                        4
+                    </option>
+                    <option>
+                        5
+                    </option>
+                </Input>
             </FormGroup>
             <FormGroup>
                 <Label for="problem_type">Категория задачи:</Label>
                 <Input
-                    type="text"
+                    type="select"
                     name="problem_type"
                     onChange={onChange}
                     defaultValue={defaultIfEmpty(problem.problem_type)}

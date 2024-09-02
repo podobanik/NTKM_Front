@@ -35,7 +35,7 @@ const ListProblems = (props) => {
             ) : Array.isArray(problems) && problems?.map(problem => (
                     <tr key={problem.pk}>
                         <td>{problem.problem_text}</td>
-                        <td>{users[problem.user].first_name + " " + users[problem.user].last_name + " " + users[problem.user].second_name}</td>
+                        <td>{users[problem.user].last_name + " " + users[problem.user].first_name + " " + users[problem.user].second_name}</td>
                         <td>{problem_type_all[problem.problem_type].problem_type_text}</td>
                         <td>{problem_status_all[problem.problem_status].problem_status_text}</td>
                         <td>{objects_of_work[problem.object_of_work].object_of_work_text}</td>

@@ -2,7 +2,7 @@ import {Fragment, useState} from "react";
 import {Button, Modal, ModalHeader, ModalBody} from "reactstrap";
 import ProblemForm from "./ProblemForm";
 
-const ModalProblem = (props) => {
+const ModalUser = (props) => {
     const [visible, setVisible] = useState(false)
     var button = <Button onClick={() => toggle()}>Редактировать</Button>;
 
@@ -43,4 +43,4 @@ const ModalProblem = (props) => {
         </Fragment>
     )
 }
-export default ModalProblem;
+export default ModalUser;
